@@ -1,0 +1,7 @@
+name: location_tp
+version: '1.0-SNAPSHOT'
+main: org.example.location_tp.LocationTP
+api-version: '1.21'
+
+commands:
+  landmark:
