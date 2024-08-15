@@ -38,7 +38,8 @@ public class LandmarkDispatcher implements TabExecutor {
     public static final List<String> cmdlets = List.of(
             "create",
             "list",
-            "tp"
+            "tp",
+            "delete"
     );
 
     @Override
@@ -54,7 +55,7 @@ public class LandmarkDispatcher implements TabExecutor {
             case "list" -> player.sendMessage(list(player).resultMessage); // это красиво
             case "create" -> {
                 if (strings.length < 2) {
-                    player.sendMessage(ChatColor.YELLOW + "Не указано имя!");
+                    player.sendMessage(ChatColor.YELLOW + "Не указано название!");
                     return false;
                 }
                 var result = create(player, strings[1], List.of(strings).subList(2, strings.length));
@@ -66,6 +67,13 @@ public class LandmarkDispatcher implements TabExecutor {
                     return false;
                 }
                 player.sendMessage(tp(player, strings[1]).resultMessage);
+            }
+            case "delete" -> {
+                if(strings.length < 2) {
+                    player.sendMessage(ChatColor.YELLOW + "Не указано название!");
+                    return false;
+                }
+                player.sendMessage(delete(strings[1]).resultMessage);
             }
             default -> {
                 player.sendMessage(ChatColor.YELLOW + strings[0] + " не является верным командлетом!");
@@ -87,11 +95,13 @@ public class LandmarkDispatcher implements TabExecutor {
         var landmarkNames = LocationTP.store.getKeys(false);
         if (landmarkNames.isEmpty())
             return Result.NOTHING;
+
         for (var name : landmarkNames) {
             var landmark = Landmark.load(LocationTP.store, name);
             if (Objects.isNull(landmark)) continue;
             player.sendMessage("\n" + ChatColor.YELLOW + landmark.chatString());
         }
+
         return Result.SILENT_SUCCESS;
     }
 
@@ -99,6 +109,7 @@ public class LandmarkDispatcher implements TabExecutor {
         if (name == null || name.isEmpty()) return Result.NO_NAME;
         if (LocationTP.store.contains(name)) return Result.NAME_OCCUPIED;
         authors = (authors == null || authors.isEmpty()) ? List.of(player.getDisplayName()) : authors;
+
         try {
             new Landmark(player.getLocation(), name, authors).save(LocationTP.store);
             LocationTP.saveStore();
@@ -119,8 +130,18 @@ public class LandmarkDispatcher implements TabExecutor {
         return Result.SUCCESS;
     }
 
+    public Result delete(String name) {
+        if (!LocationTP.store.contains(name)) return Result.NO_NAME;
+        try {
+            LocationTP.store.set(name, null);
+            return Result.SUCCESS;
+        } catch (Exception e) {
+            return Result.FAIL;
+        }
+    }
+
     // Возможно перебор, но мне нравится сама идея
-    private enum Result {
+    public enum Result {
         SILENT_SUCCESS(""),
         SUCCESS(ChatColor.GREEN + "Успех!"),
         NOTHING(ChatColor.BLUE + "Пусто!"),
