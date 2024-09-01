@@ -1,0 +1,36 @@
+package org.example.location_tp.command.landmark;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.example.location_tp.LocationTP;
+import org.example.location_tp.command.ResultExecutor;
+import org.example.location_tp.util.ResultMessage;
+
+public class Delete implements ResultExecutor {
+    private ResultMessage resultMessage;
+
+    @Override
+    public ResultMessage getResultMessage() {
+        return this.resultMessage;
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player player) || args.length < 1) return false;
+
+        String name = args[0];
+        if (!LocationTP.store.contains(name)) {
+            this.resultMessage = ResultMessage.NO_NAME;
+            return true;
+        }
+
+        try {
+            LocationTP.store.set(name, null);
+            this.resultMessage = ResultMessage.SUCCESS;
+        } catch (Exception e) {
+            this.resultMessage = ResultMessage.FAIL;
+        }
+        return true;
+    }
+}
