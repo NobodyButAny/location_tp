@@ -7,13 +7,7 @@ import org.example.location_tp.LocationTP;
 import org.example.location_tp.command.ResultExecutor;
 import org.example.location_tp.util.ResultMessage;
 
-public class Delete implements ResultExecutor {
-    private ResultMessage resultMessage;
-
-    @Override
-    public ResultMessage getResultMessage() {
-        return this.resultMessage;
-    }
+public class Delete extends ResultExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

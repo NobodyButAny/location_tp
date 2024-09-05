@@ -12,9 +12,7 @@ import org.example.location_tp.util.ResultMessage;
 
 import java.util.Objects;
 
-public class List implements ResultExecutor {
-    private ResultMessage resultMessage;
-
+public class List extends ResultExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player player)) return false;
@@ -33,10 +31,5 @@ public class List implements ResultExecutor {
 
         this.resultMessage = ResultMessage.SILENT_SUCCESS;
         return true;
-    }
-
-    @Override
-    public ResultMessage getResultMessage() {
-        return resultMessage;
     }
 }

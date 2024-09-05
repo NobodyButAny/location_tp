@@ -1,6 +1,11 @@
 package org.example.location_tp.util;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.YamlConfiguration;
+
+import java.util.*;
 
 public enum ResultMessage {
     SILENT_SUCCESS(""),
@@ -17,3 +22,10 @@ public enum ResultMessage {
         this.resultMessage = text;
     }
 }
+
+/*
+    $success:
+        color: "GREEN"
+        ru: "Успех!"
+        en: "Success!"
+ */

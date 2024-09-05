@@ -12,13 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Create implements ResultExecutor {
-    private ResultMessage resultMessage;
-
-    @Override
-    public ResultMessage getResultMessage() {
-        return this.resultMessage;
-    }
+public class Create extends ResultExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

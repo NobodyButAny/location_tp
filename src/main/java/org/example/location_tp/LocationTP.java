@@ -3,7 +3,6 @@ package org.example.location_tp;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.example.location_tp.command.Dispatcher;
-import org.example.location_tp.command.landmark.LandmarkDispatcher;
 import org.example.location_tp.command.landmark.NewLandmarkDispatcher;
 
 import java.io.File;

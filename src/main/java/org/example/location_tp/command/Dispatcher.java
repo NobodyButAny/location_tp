@@ -25,7 +25,7 @@ public class Dispatcher implements CommandExecutor {
         var executor = routes.get(args[0]);
         var flag = executor.onCommand(sender, command, label, Arrays.copyOfRange(args, 1, args.length));
         if (executor instanceof ResultExecutor resultExecutor) {
-            sender.sendMessage(resultExecutor.getResultMessage().resultMessage);
+            sender.sendMessage(resultExecutor.resultMessage.resultMessage);
         }
         return flag;
     }
