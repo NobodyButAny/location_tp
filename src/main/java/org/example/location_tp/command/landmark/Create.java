@@ -23,22 +23,22 @@ public class Create extends ResultExecutor {
         authors = authors.isEmpty() ? List.of(player.getDisplayName()) : authors;
 
         if (name == null || name.isEmpty()) {
-            this.resultMessage = ResultMessage.NO_NAME;
+            this.resultMessage = ResultMessage.of("$no_name").get();
             return false;
         }
         if (LocationTP.store.contains(name)) {
-            this.resultMessage = ResultMessage.NAME_OCCUPIED;
+            this.resultMessage = ResultMessage.of("$name_occupied").get();
             return true;
         }
         try {
             new Landmark(player.getLocation(), name, authors).save(LocationTP.store);
             LocationTP.saveStore();
         } catch (Exception e) {
-            this.resultMessage = ResultMessage.FAIL;
+            this.resultMessage = ResultMessage.of("$fail").get();
             return true;
         }
 
-        this.resultMessage = ResultMessage.SUCCESS;
+        this.resultMessage = ResultMessage.of("$success").get();
         return true;
     }
 }
