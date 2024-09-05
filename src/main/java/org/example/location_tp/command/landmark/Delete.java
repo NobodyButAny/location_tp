@@ -15,15 +15,15 @@ public class Delete extends ResultExecutor {
 
         String name = args[0];
         if (!LocationTP.store.contains(name)) {
-            this.resultMessage = ResultMessage.NO_NAME;
+            this.resultMessage = ResultMessage.of("$no_name").get();
             return true;
         }
 
         try {
             LocationTP.store.set(name, null);
-            this.resultMessage = ResultMessage.SUCCESS;
+            this.resultMessage = ResultMessage.of("$success").get();
         } catch (Exception e) {
-            this.resultMessage = ResultMessage.FAIL;
+            this.resultMessage = ResultMessage.of("$fail").get();
         }
         return true;
     }

@@ -19,7 +19,7 @@ public class List extends ResultExecutor {
 
         var landmarkNames = LocationTP.store.getKeys(false);
         if (landmarkNames.isEmpty()) {
-            this.resultMessage = ResultMessage.NOTHING;
+            this.resultMessage = ResultMessage.of("$nothing").get();
             return true;
         }
 
@@ -29,7 +29,7 @@ public class List extends ResultExecutor {
             player.sendMessage("\n" + ChatColor.YELLOW + landmark.chatString());
         }
 
-        this.resultMessage = ResultMessage.SILENT_SUCCESS;
+        this.resultMessage = ResultMessage.of("$silent_success").get();
         return true;
     }
 }
