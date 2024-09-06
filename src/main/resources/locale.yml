@@ -1,0 +1,50 @@
+#// Пока пишу код пусть висит перед глазами
+#//public enum ResultMessage {
+#//    SILENT_SUCCESS(""),
+#//    SUCCESS(ChatColor.GREEN + "Успех!"),
+#//    NOTHING(ChatColor.BLUE + "Пусто!"),
+#//    NAME_OCCUPIED(ChatColor.YELLOW + "Указанное имя уже занято!"),
+#//    NO_NAME(ChatColor.YELLOW + "Отсутствует или указанно пустое имя!"),
+#//    INVALID_ARGUMENTS(ChatColor.RED + "Указан неверный набор аргументов!"),
+#//    FAIL(ChatColor.RED + "Не удалось совершить операцию!");
+#//
+#//    public final String resultMessage;
+#//
+#//    ResultMessage(String text) {
+#//        this.resultMessage = text;
+#//    }
+#//}
+
+$silent_success:
+  ru: ""
+  en: ""
+
+$success:
+  color: GREEN
+  ru: Успех!
+  en: Success!
+
+$nothing:
+  color: BLUE
+  ru: Пусто!
+  en: Empty!
+
+$name_occupied:
+  color: YELLOW
+  ru: Указанное имя уже занято!
+  en: That name is already occupied!
+
+$no_name:
+  color: YELLOW
+  ru: Отсутствует или указанно пустое имя!
+  en: Name missing or empty string provided!
+
+$invalid_arguments:
+  color: RED
+  ru: Указан неверный набор аргументов!
+  en: Invalid arguments provided!
+
+$fail:
+  color: RED
+  ru: Не удалось совершить операцию!
+  en: Failed to perform operation!
