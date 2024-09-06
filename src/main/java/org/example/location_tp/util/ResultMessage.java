@@ -76,6 +76,10 @@ public class ResultMessage {
         }
     }
 
+    public ChatColor getColor() {
+        return this.color;
+    }
+
     public String getLocale(String regionId) {
         if (messageLocales.isEmpty()) return this.identifier;
 
