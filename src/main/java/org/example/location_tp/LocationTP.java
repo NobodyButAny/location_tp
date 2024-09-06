@@ -32,4 +32,8 @@ public final class LocationTP extends JavaPlugin {
     public static void saveStore() throws IOException {
         store.save(storeFile);
     }
+
+    public static void loadResultMessages() {
+        // TODO
+    }
 }
