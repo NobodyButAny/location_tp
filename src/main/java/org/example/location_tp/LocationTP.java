@@ -2,8 +2,7 @@ package org.example.location_tp;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.example.location_tp.command.Dispatcher;
-import org.example.location_tp.command.landmark.NewLandmarkDispatcher;
+import org.example.location_tp.command.landmark.LandmarkDispatcher;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +16,7 @@ public final class LocationTP extends JavaPlugin {
         storeFile = new File(getDataFolder(), "store.yml");
         store = YamlConfiguration.loadConfiguration(storeFile);
 
-        getCommand("landmark").setExecutor(new NewLandmarkDispatcher());
+        getCommand("landmark").setExecutor(new LandmarkDispatcher());
     }
 
     @Override
